@@ -1877,7 +1877,8 @@ import sacrebleu
     # epoch_mins, epoch_secs = epoch_time(start_time, end_time)
 
 # state_dict = torch.load('./double_decoder_rl_cc_yelp_remaining/tr_model_full_reward_epoch0.pt')
-state_dict = torch.load('./double_decoder_rl_cc_yelp_nll/tr_model_full_reward_epoch0.pt')
+# state_dict = torch.load('./double_decoder_rl_cc_yelp_nll/tr_model_full_reward_epoch0.pt')
+state_dict = torch.load('./checkpoints/full_reward_epoch0.pt')
 # print(state_dict)
 state_dict = OrderedDict([(k[7:], v) for k, v in state_dict.items()])
 # print(state_dict)
