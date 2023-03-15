@@ -743,7 +743,8 @@ SRC_PAD_IDX = SRC.vocab.stoi[SRC.pad_token]
 TRG_PAD_IDX = TRG.vocab.stoi[TRG.pad_token]
 
 model = Seq2Seq(enc, dec_h,dec_n, SRC_PAD_IDX, TRG_PAD_IDX, device)
-state_dict = torch.load('./double_decoder_rl_cc_yelp/tr_model_full_reward_epoch3.pt')
+# state_dict = torch.load('./double_decoder_rl_cc_yelp/tr_model_full_reward_epoch3.pt')
+state_dict = torch.load('./checkpoints/warmup_3_epochs_wo_rl.pt')
 # print(state_dict)
 from collections import OrderedDict
 state_dict = OrderedDict([(k[7:], v) for k, v in state_dict.items()])
@@ -1793,7 +1794,8 @@ for epoch in range(N_EPOCHS):
     
     # if valid_loss < best_valid_loss:
     #     best_valid_loss = valid_loss
-    torch.save(model.state_dict(), './double_decoder_rl_cc_yelp_nll/tr_model_full_reward_epoch{}.pt'.format(epoch))
+    #     torch.save(model.state_dict(), './double_decoder_rl_cc_yelp_nll/tr_model_full_reward_epoch{}.pt'.format(epoch))
+    torch.save(model.state_dict(), './checkpoints/full_reward_epoch{}.pt'.format(epoch))
     
     print(f'Epoch: {epoch+1:02} | Time: {epoch_mins}m {epoch_secs}s')
     print(f'\tTrain Loss: {train_loss:.3f} | Train PPL: {math.exp(train_loss):7.3f}')
